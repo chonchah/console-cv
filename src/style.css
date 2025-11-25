@@ -1,79 +1,109 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Definición de la fuente monoespaciada para la sensación de terminal */
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: #1e1e1e; /* Fondo oscuro tipo terminal */
+            color: #00ff00; /* Texto verde brillante */
+            line-height: 1.5;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+        .terminal-container {
+            width: 95%;
+            max-width: 900px;
+            min-height: 70vh;
+            background-color: #000000;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+        .terminal-header {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 5px 10px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: -20px -20px 20px -20px; /* Ajuste para el padding del container */
+            border-bottom: 1px solid #00ff00;
+        }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+        .dots {
+            display: flex;
+            gap: 6px;
+        }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot.red { background-color: #ff5f56; }
+        .dot.yellow { background-color: #ffbd2e; }
+        .dot.green { background-color: #27c93f; }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+        .terminal-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            max-height: calc(70vh - 80px); /* Ajuste de altura */
+        }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+        /* Estilo para el prompt de la consola */
+        .prompt::before {
+            content: 'chonchah@gmail.com:~$ ';
+            color: #ffffff; /* Color blanco para el usuario */
+            margin-right: 5px;
+        }
+        
+        .command-output {
+            margin-bottom: 15px;
+            white-space: pre-wrap; /* Mantiene saltos de línea y espacios */
+        }
 
-.card {
-  padding: 2em;
-}
+        /* Cursor parpadeante (Blink) */
+        .cursor {
+            background-color: #00ff00;
+            display: inline-block;
+            width: 8px;
+            height: 1.1em;
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
+        }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+        @keyframes blink {
+            from, to { visibility: visible; }
+            50% { visibility: hidden; }
+        }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+        /* Enlaces de navegación */
+        .nav-link {
+            text-decoration: none;
+            color: #00ff00;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+        }
+
+        /* Estilos específicos para la sección de Proyectos */
+        .project-card {
+            border-left: 3px solid #00ff00;
+            padding-left: 10px;
+            margin-top: 10px;
+        }
